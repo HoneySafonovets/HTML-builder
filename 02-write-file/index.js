@@ -6,7 +6,7 @@ const rl = readline.createInterface({ input, output });
 const filePath = path.join('./02-write-file/text.txt');
 
 
-async function writeFile() {
+function writeFile() {
   const entry = fs.createWriteStream(filePath, 'utf-8');
 
   // rl.question('Hello User! What do you want to write to the file?')
@@ -32,3 +32,5 @@ async function writeFile() {
   });
 };
 writeFile();
+
+// node 02-write-file

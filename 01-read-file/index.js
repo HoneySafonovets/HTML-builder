@@ -7,3 +7,5 @@ const stream = fs.createReadStream(filePath, 'utf-8');
 stream.on('data', data => {
   console.log(data);
 })
+
+// Привет! Если можешь проверь, пожалуйста, на день позже. Не все доделан постараюсь 22 числа все закончить!
