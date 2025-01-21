@@ -18,19 +18,30 @@ fs.readdir(folderPath, 'utf-8', (err, files) => {
   if (err) {
     throw err;
   };
-  // fs.readdir(newFolderPath, 'utf-8', (err, newFiles) => {
-  //   if (err) {
-  //     throw err;
-  //   };
-  //   // newFiles.filter((e) => )
-
-  // });
   files.forEach((e) => {
     fs.copyFile(`${folderPath}${e}`, `${newFolderPath}${e}`, fs.constants.COPYFILE_FICLONE, (err) => {
       if (err) {
         console.log(err);
       }
     });
+  });
+  fs.readdir(newFolderPath, 'utf-8', (err, newFiles) => {
+    if (err) {
+      throw err;
+    };
+
+    if (files.length < newFiles.length) {
+      newFiles.forEach((e) => {
+        if (files.indexOf(e) === -1) {
+          console.log('Work!')
+          fs.rm(`${newFolderPath}${e}`, (err) => {
+            if (err) {
+              throw err;
+            }
+          });
+        }
+      })
+    }
   });
 });
 
